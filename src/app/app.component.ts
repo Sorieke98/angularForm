@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {FormControl, Validators} from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularForm';
+
+  emailCorreo: FormControl;
+
+  constructor(){
+    this.emailCorreo= new FormControl('', [
+      Validators.required,
+      Validators.maxLength(3)
+    ]);
+    this.emailCorreo.valueChanges
+    .subscribe(value=>{
+      console.log(value)
+    })
+  }
 }
+
